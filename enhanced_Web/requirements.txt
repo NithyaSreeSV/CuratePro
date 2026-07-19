@@ -1,0 +1,7 @@
+feedparser
+python-dotenv
+google-genai
+bs4
+requests
+fastapi
+pydantic

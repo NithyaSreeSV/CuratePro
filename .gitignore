@@ -1,0 +1,5 @@
+# Ignore local environment keys in both projects
+**/.env
+
+# Ignore compiled Python bytecode folders
+**/__pycache__/
