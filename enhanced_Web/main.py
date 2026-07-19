@@ -22,6 +22,7 @@ class CurationRequest(BaseModel):
     tone: str
     format_style: str  # New field!
 
+@app.post("/enhanced_Web/api/curate")
 @app.post("/api/curate")
 async def curate_content(request: CurationRequest):
     try:
