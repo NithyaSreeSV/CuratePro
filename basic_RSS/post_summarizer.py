@@ -2,7 +2,7 @@ import os
 from google import genai
 
 class PostSummarizer:
-    """Interfaces with the Gemini API to create highly engaging LinkedIn drafts."""
+    """Interfaces with the Gemini API to create highly engaging drafts."""
     def __init__(self):
         api_key = os.getenv("GEMINI_API_KEY")
         if not api_key:
@@ -11,7 +11,7 @@ class PostSummarizer:
         self.client = genai.Client(api_key=api_key)
 
     def generate_draft(self, article_title: str, article_context: str, tone: str) -> str:
-        """Sends data to Gemini to generate a professional LinkedIn post draft."""
+        """Sends data to Gemini to generate a professional post draft."""
         print("Generating summary using Gemini...")
         
         prompt = f"""
@@ -36,7 +36,7 @@ class PostSummarizer:
         5. Keep it precise, avoiding corporate fluff.
         """
         
-        # Using gemini-2.5-flash as the fast, lightweight standard model
+        # Using gemini-3.5-flash model for extracting the response
         response = self.client.models.generate_content(
             model='gemini-3.5-flash',
             contents=prompt,
