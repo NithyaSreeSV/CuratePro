@@ -10,16 +10,15 @@ load_dotenv()
 
 app = FastAPI(title="LinkedIn Content Curator API")
 
-# Enable CORS so our frontend can securely talk to the backend engine
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Allows local file viewing/frontend testing
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# Define the expected JSON format for incoming data
+# expected JSON format for incoming data
 class CurationRequest(BaseModel):
     feed_url: str
     tone: str
