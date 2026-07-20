@@ -20,13 +20,12 @@ app.add_middleware(
 class CurationRequest(BaseModel):
     url: str
     tone: str
-    format_style: str  # New field!
+    format_style: str
 
 @app.post("/enhanced_Web/api/curate")
 @app.post("/api/curate")
 async def curate_content(request: CurationRequest):
     try:
-        # Utilizing our unified metadata/html content crawler
         fetcher = UniversalWebFetcher(request.url)
         summarizer = PostSummarizer()
         
@@ -55,6 +54,6 @@ async def serve_frontend():
 if __name__ == "__main__":
     import uvicorn
     import os
-    # Dynamically read the port assigned by Render, defaulting to 8000 locally
+
     port = int(os.environ.get("PORT", 8001))
     uvicorn.run("main:app", host="0.0.0.0", port=port, reload=True)
